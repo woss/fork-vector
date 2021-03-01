@@ -306,15 +306,37 @@ fn tutorials() -> Vec<Tutorial> {
 
             TASK:
             - Delete fields `one` and `two` from the event
+
+            FYI:
+            - The `del` function returns the value of the field being deleted
         "#},
         initial_event: value![{"one": 1, "two": 2, "three": 3}],
         correct_answer: value![{"three": 3}],
         cheat: "del(.one); del(.two)",
     };
 
-    let exists_tut = Tutorial {
+    let renaming_fields_tut = Tutorial {
         section: 1,
         id: 3,
+        title: "Renaming fields",
+        docs: "functions/#del",
+        help_text: indoc! {r#"
+            Remember from the last tutorial that deleting a field returns the
+            value of the field. This is useful for renaming fields:
+
+            .new_field_name = del(.old_field_name)
+
+            TASK:
+            - Rename the `rename_me` field to `happily_renamed`
+        "#},
+        initial_event: value![{"rename_me": "...nothing to see here..."}],
+        correct_answer: value![{"happily_renamed": "...nothing to see here..."}],
+        cheat: ".happily_renamed = del(.rename_me)",
+    };
+
+    let exists_tut = Tutorial {
+        section: 1,
+        id: 4,
         title: "Existence checking",
         docs: "functions/#exists",
         help_text: indoc! {r#"
@@ -340,7 +362,7 @@ fn tutorials() -> Vec<Tutorial> {
 
     let type_coercion_tut = Tutorial {
         section: 1,
-        id: 4,
+        id: 5,
         title: "Type coercion",
         docs: "functions/#coerce-functions",
         help_text: indoc! {r#"
@@ -502,6 +524,7 @@ fn tutorials() -> Vec<Tutorial> {
     vec![
         assignment_tut,
         deleting_fields_tut,
+        renaming_fields_tut,
         exists_tut,
         type_coercion_tut,
         parse_json_tut,
