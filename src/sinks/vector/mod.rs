@@ -961,7 +961,7 @@ mod tests {
                 let event: Event = event.into();
                 let string = event
                     .as_log()
-                    .get("message")
+                    .get_message()
                     .unwrap()
                     .to_string_lossy()
                     .into_owned();
