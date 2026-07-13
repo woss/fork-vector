@@ -2174,6 +2174,7 @@ mod tests {
             timestamp_key: None,
             auto_extract_timestamp: None,
             endpoint_target: Default::default(),
+            confinement: Default::default(),
         }
         .build(SinkContext::default())
         .await
